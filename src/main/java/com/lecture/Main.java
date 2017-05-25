@@ -8,7 +8,6 @@ import org.apache.flink.api.java.ExecutionEnvironment;
 public class Main {
 
     public static void main(String[] args) throws Exception{
-        IngestData id = new IngestData();
-        id.getTokenizedNews().print();
+        ProcessData.process(IngestData.getNews());
     }
 }
