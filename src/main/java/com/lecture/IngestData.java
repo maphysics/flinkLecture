@@ -1,7 +1,7 @@
 package com.lecture;
 
 import org.apache.flink.api.java.DataSet;
-import org.apache.flink.api.java.ExecutionEnvironment;2
+import org.apache.flink.api.java.ExecutionEnvironment;
 
 /**
  * Created by Melissa on 5/24/2017.

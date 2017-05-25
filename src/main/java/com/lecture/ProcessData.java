@@ -24,6 +24,7 @@ public class ProcessData {
 
         DataSet<String> newsFilteredAgain = newsFiltered.filter(new FilterFunction<String>() {
             //TODO! Deal with Headlines containing commas
+            //TODO! Tee rejected rows to logfile for review
             public boolean filter(String s) throws Exception {
                 if (s.split(",").length == 6) {
                     return true;
