@@ -3,6 +3,7 @@ package com.lecture;
 import org.apache.flink.api.common.functions.FilterFunction;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.java.DataSet;
+import org.apache.flink.api.java.aggregation.Aggregations;
 import org.apache.flink.api.java.tuple.*;
 
 /**
@@ -10,7 +11,7 @@ import org.apache.flink.api.java.tuple.*;
  */
 public class ProcessData {
 
-    public static void process(DataSet<String> news) {
+    public static DataSet<Tuple2<Integer, Tuple5<String, String, String, Integer, Integer>>> process(DataSet<String> news) throws Exception{
         DataSet<String> newsFiltered = news.filter(new FilterFunction<String>() {
             public boolean filter(String s) throws Exception {
                 String[] pieces = s.split(",");
@@ -34,7 +35,7 @@ public class ProcessData {
             }
         });
 
-        DataSet<Tuple2<Integer, Tuple5<String, String, String, Integer, Integer>>> tokenizedNews = newsFilteredAgain.map(new MapFunction<String, Tuple2<Integer, Tuple5<String, String, String, Integer, Integer>>>() {
+        DataSet<Tuple2<Integer, Tuple5<String, String, String, Integer, Integer>>> tuplizedNews = newsFilteredAgain.map(new MapFunction<String, Tuple2<Integer, Tuple5<String, String, String, Integer, Integer>>>() {
             public Tuple2<Integer, Tuple5<String, String, String, Integer, Integer>> map(String s) throws Exception {
                 String[] columns = s.split(",");
 
@@ -47,8 +48,8 @@ public class ProcessData {
             }
         });
 
-        //TODO! Add flatmap
-//        DstaSet<Tuple2<String, Integer>>
+        return tuplizedNews;
+
 
     }
 }

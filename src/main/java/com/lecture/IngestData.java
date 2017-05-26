@@ -12,7 +12,8 @@ public class IngestData {
         final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
 
         //TODO! update location!
-        DataSet<String> news = env.readTextFile("file:///C:\\Users\\Melissa\\Downloads\\news.csv");
+        //TODO! Use csvReader
+        DataSet<String> news = env.readTextFile("file:///C:\\Users\\Melissa\\flinkLecture\\src\\main\\resources\\news.csv");
 
         return news;
     }
